@@ -113,26 +113,33 @@ namespace SebWindowsClient.ConfigurationUtils
                 //Re-initialize logger
                 SEBClientInfo.InitializeLogger();
 
-				// Check if SEB is running on the standard desktop and the new settings demand to run in new desktop (createNewDesktop = true)
-				// or the other way around!
-				if (SEBClientInfo.CreateNewDesktopOldValue != (bool) SEBSettings.valueForDictionaryKey(SEBSettings.settingsCurrent, SEBSettings.KeyCreateNewDesktop))
-				{
-					// If it did, SEB needs to quit and be restarted manually for the new setting to take effekt
-					if (SEBClientInfo.CreateNewDesktopOldValue == false)
-					{
-						SEBMessageBox.Show(SEBUIStrings.settingsRequireNewDesktop, SEBUIStrings.settingsRequireNewDesktopReason, MessageBoxIcon.Error, MessageBoxButtons.OK);
-					}
-					else
-					{
-						SEBMessageBox.Show(SEBUIStrings.settingsRequireNotNewDesktop, SEBUIStrings.settingsRequireNotNewDesktopReason, MessageBoxIcon.Error, MessageBoxButtons.OK);
-					}
+                // Check if SEB is running on the standard desktop and the new settings demand to run in new desktop (createNewDesktop = true)
+                // or the other way around!
+                if ((Boolean)SEBSettings.settingsCurrent[SEBSettings.KeySEBServer] == false)
+                {
+                    if (SEBClientInfo.CreateNewDesktopOldValue != (bool)SEBSettings.valueForDictionaryKey(SEBSettings.settingsCurrent, SEBSettings.KeyCreateNewDesktop))
+                    {
+                        // If it did, SEB needs to quit and be restarted manually for the new setting to take effekt
+                        if (SEBClientInfo.CreateNewDesktopOldValue == false)
+                        {
+                            SEBMessageBox.Show(SEBUIStrings.settingsRequireNewDesktop, SEBUIStrings.settingsRequireNewDesktopReason, MessageBoxIcon.Error, MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            SEBMessageBox.Show(SEBUIStrings.settingsRequireNotNewDesktop, SEBUIStrings.settingsRequireNotNewDesktopReason, MessageBoxIcon.Error, MessageBoxButtons.OK);
+                        }
 
-					//SEBClientInfo.SebWindowsClientForm.closeSebClient = true;
-					SEBClientInfo.SebWindowsClientForm.ExitApplication();
-				}
+                        //SEBClientInfo.SebWindowsClientForm.closeSebClient = true;
+                        SEBClientInfo.SebWindowsClientForm.ExitApplication();
+                    }
+                }
+                else
+                {
+                    Application.Restart();
+                }
 
-				// Re-Initialize SEB according to the new settings
-				Logger.AddInformation("Attemting to InitSEBDesktop for reconfiguration");
+                    // Re-Initialize SEB according to the new settings
+                    Logger.AddInformation("Attemting to InitSEBDesktop for reconfiguration");
                 if (!SebWindowsClientMain.InitSEBDesktop()) return false;
                 Logger.AddInformation("Sucessfully InitSEBDesktop for reconfiguration");
                 // Re-open the main form
@@ -204,6 +211,9 @@ namespace SebWindowsClient.ConfigurationUtils
                             //SEBClientInfo.SebWindowsClientForm.closeSebClient = true;
                             SEBClientInfo.SebWindowsClientForm.ExitApplication();
                         }
+                    }
+                    else {
+                        Application.Restart();
                     }
                     return true; //reading preferences was successful
                 }

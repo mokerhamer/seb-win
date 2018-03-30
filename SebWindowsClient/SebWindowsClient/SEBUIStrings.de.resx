@@ -387,6 +387,12 @@
   <data name="cannotOpenSEBLinkMessage" xml:space="preserve">
     <value>Öffnen des SEB-Links ist fehlgeschlagen. Überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</value>
   </data>
+  <data name="cannotOpenSEBLinkAPI" xml:space="preserve">
+    <value>Seb Server domain.</value>
+  </data>
+  <data name="cannotOpenSEBLinkMessageAPI" xml:space="preserve">
+    <value>Seb Server Security: Domain does not equal Seb Server domain. Download and Configuration has been halted, please contact your Administrator.</value>
+  </data>
   <data name="NoWLANInterface" xml:space="preserve">
     <value>Kein WLAN-Interface gefunden</value>
   </data>

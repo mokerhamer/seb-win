@@ -212,8 +212,21 @@ namespace SebWindowsClient
 						try
 						{
 							WebClient myWebClient = new WebClient();
+                            UriBuilder SebServerUrl = new UriBuilder((string)SEBClientInfo.getSebSetting(SEBSettings.KeySebServerURL)[SEBSettings.KeySebServerURL]);
+                            Uri ApiUrl = new Uri(SebServerUrl.ToString());
+                            
+                            //If SEB Server Manager is used check if download and open seb config security is enabled.
+                            if ((Boolean)SEBSettings.valueForDictionaryKey(SEBSettings.settingsCurrent, SEBSettings.KeySEBServer) == true && (Boolean)SEBSettings.valueForDictionaryKey(SEBSettings.settingsCurrent, SEBSettings.KeyDownloadAndOpenSebConfigFromAPIONLY) == true)
+                                {
+                                  if (uri.Host != ApiUrl.Host)
+                                    {
+                                        SEBMessageBox.Show(SEBUIStrings.cannotOpenSEBLinkAPI, SEBUIStrings.cannotOpenSEBLinkMessageAPI, MessageBoxIcon.Error, MessageBoxButtons.OK);
+                                        Logger.AddError("Downloading .seb settings from a different domain is not allowed. Download has been halted, please contact the Administrator.", null, null);
+                                        return false;
+                                     }
+                                 }
 
-							if (uri.Scheme == "seb")
+                            if (uri.Scheme == "seb")
 							{
 								// Try first by http
 								Logger.AddError("Trying to download .seb settings by http", null, null);
