@@ -224,20 +224,34 @@ namespace SebWindowsClient.ConfigurationUtils
 
 		private static string GetStartupPathOrUrl()
 		{
-			if (!string.IsNullOrEmpty((string)SEBSettings.settingsCurrent[SEBSettings.KeyStartResource]))
-			{
-				var resource =
-					GetAdditionalResourceById((string)SEBSettings.settingsCurrent[SEBSettings.KeyStartResource]);
-				var filename = (string)resource[SEBSettings.KeyAdditionalResourcesResourceDataFilename];
-				var path =
-					new FileCompressor().DecompressDecodeAndSaveFile(
-						(string)resource[SEBSettings.KeyAdditionalResourcesResourceData], filename, resource[SEBSettings.KeyAdditionalResourcesIdentifier].ToString());
-				return new Uri(path + filename).AbsoluteUri;
-			}
-			else
-			{
-				return SEBClientInfo.getSebSetting(SEBSettings.KeyStartURL)[SEBSettings.KeyStartURL].ToString();
-			}
+            var compareTimeStamp = (Convert.ToDateTime(Convert.ToString(DateTime.Now.ToString())) - (Convert.ToDateTime(File.GetLastWriteTime(SEBClientInfo.SebClientSettingsAppDataFile).ToString())));
+            Logger.AddInformation("Timestamp difference (min) " + (int)compareTimeStamp.TotalMinutes + " Configured refresh time: " + Convert.ToInt32(SEBClientInfo.getSebSetting(SEBSettings.KeySebAPI_Refresh)[SEBSettings.KeySebAPI_Refresh]) + " min.");
+
+            if (((int)compareTimeStamp.TotalMinutes >= Convert.ToInt32(SEBClientInfo.getSebSetting(SEBSettings.KeySebAPI_Refresh)[SEBSettings.KeySebAPI_Refresh])) && (Boolean)SEBSettings.settingsCurrent[SEBSettings.KeySEBServer] == true)
+            {
+                Logger.AddInformation("Using Server URL " + (int)compareTimeStamp.TotalMinutes);
+                string UrlVariables = "&APICode=" + SEBClientInfo.getSebSetting(SEBSettings.KeySebServerURL)[SEBSettings.KeySebAUTH_KEY].ToString() + "&Hostname=" + System.Net.Dns.GetHostName() + "&MachineGUID=" + SEBClientInfo.MachineGUID();
+                var BuildURL = "http://" + SEBClientInfo.getSebSetting(SEBSettings.KeySebServerURL)[SEBSettings.KeySebServerURL].ToString();
+                Logger.AddInformation("SEB Server used, GetStartupPathOrUrl returned: " + BuildURL.ToString() + UrlVariables);
+                return BuildURL.ToString() + UrlVariables;
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty((string)SEBSettings.settingsCurrent[SEBSettings.KeyStartResource]))
+                {
+                    var resource =
+                        GetAdditionalResourceById((string)SEBSettings.settingsCurrent[SEBSettings.KeyStartResource]);
+                    var filename = (string)resource[SEBSettings.KeyAdditionalResourcesResourceDataFilename];
+                    var path =
+                        new FileCompressor().DecompressDecodeAndSaveFile(
+                            (string)resource[SEBSettings.KeyAdditionalResourcesResourceData], filename, resource[SEBSettings.KeyAdditionalResourcesIdentifier].ToString());
+                    return new Uri(path + filename).AbsoluteUri;
+                }
+                else
+                {
+                    return SEBClientInfo.getSebSetting(SEBSettings.KeyStartURL)[SEBSettings.KeyStartURL].ToString();
+                }
+            }
 		}
 
 		private static DictObj GetAdditionalResourceById(string resourceIdentifier)

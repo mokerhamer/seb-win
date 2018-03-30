@@ -184,25 +184,27 @@ namespace SebWindowsClient.ConfigurationUtils
 
                 if (SEBClientInfo.SebWindowsClientForm.OpenSEBForm())
                 {
-					// Activate SebWindowsClient so the message box gets focus
-					//SEBClientInfo.SebWindowsClientForm.Activate();
-
-					// Check if setting for createNewDesktop changed
-					if (SEBClientInfo.CreateNewDesktopOldValue != (bool) SEBSettings.valueForDictionaryKey(SEBSettings.settingsCurrent, SEBSettings.KeyCreateNewDesktop))
-					{
-						// If it did, SEB needs to quit and be restarted manually for the new setting to take effekt
-						SEBMessageBox.Show(SEBUIStrings.sebReconfiguredRestartNeeded, SEBUIStrings.sebReconfiguredRestartNeededReason, MessageBoxIcon.Warning, MessageBoxButtons.OK);
-						
-						//SEBClientInfo.SebWindowsClientForm.closeSebClient = true;
-						SEBClientInfo.SebWindowsClientForm.ExitApplication();
-					}
-
-					if (SEBMessageBox.Show(SEBUIStrings.sebReconfigured, SEBUIStrings.sebReconfiguredQuestion, MessageBoxIcon.Question, MessageBoxButtons.YesNo) == DialogResult.No)
+                    if ((Boolean)SEBSettings.settingsCurrent[SEBSettings.KeySEBServer] == false)
                     {
-                        //SEBClientInfo.SebWindowsClientForm.closeSebClient = true;
-                        SEBClientInfo.SebWindowsClientForm.ExitApplication();
-                    }
+                        // Activate SebWindowsClient so the message box gets focus
+                        //SEBClientInfo.SebWindowsClientForm.Activate();
 
+                        // Check if setting for createNewDesktop changed
+                        if (SEBClientInfo.CreateNewDesktopOldValue != (bool)SEBSettings.valueForDictionaryKey(SEBSettings.settingsCurrent, SEBSettings.KeyCreateNewDesktop))
+                        {
+                            // If it did, SEB needs to quit and be restarted manually for the new setting to take effekt
+                            SEBMessageBox.Show(SEBUIStrings.sebReconfiguredRestartNeeded, SEBUIStrings.sebReconfiguredRestartNeededReason, MessageBoxIcon.Warning, MessageBoxButtons.OK);
+
+                            //SEBClientInfo.SebWindowsClientForm.closeSebClient = true;
+                            SEBClientInfo.SebWindowsClientForm.ExitApplication();
+                        }
+
+                        if (SEBMessageBox.Show(SEBUIStrings.sebReconfigured, SEBUIStrings.sebReconfiguredQuestion, MessageBoxIcon.Question, MessageBoxButtons.YesNo) == DialogResult.No)
+                        {
+                            //SEBClientInfo.SebWindowsClientForm.closeSebClient = true;
+                            SEBClientInfo.SebWindowsClientForm.ExitApplication();
+                        }
+                    }
                     return true; //reading preferences was successful
                 }
                 else

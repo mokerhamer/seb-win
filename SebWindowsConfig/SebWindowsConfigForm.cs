@@ -270,10 +270,15 @@ namespace SebWindowsConfig
 			// Group "General"
 			textBoxStartURL    .Text = (String)SEBSettings.settingsCurrent[SEBSettings.KeyStartURL];
 			textBoxSebServerURL.Text = (String)SEBSettings.settingsCurrent[SEBSettings.KeySebServerURL];
+            textBoxAUTH_KEY.Text = (String)SEBSettings.settingsCurrent[SEBSettings.KeySebAUTH_KEY];
+            textBoxAPI_Refresh.Text = (String)SEBSettings.settingsCurrent[SEBSettings.KeySebAPI_Refresh];
+            textBoxUnique_KEY.Text = System.Net.Dns.GetHostName();
+            textBoxMachineGUID.Text = SEBClientInfo.MachineGUID();
+            checkBoxDownloadOpenSEBFilesFromAPIONLY.Checked = (Boolean)SEBSettings.settingsCurrent[SEBSettings.KeyDownloadAndOpenSebConfigFromAPIONLY];
 
-			// If an admin password is saved in the settings (as a hash), 
-			// then we fill a placeholder string into the admin password text fields
-			if (!String.IsNullOrEmpty((String)SEBSettings.settingsCurrent[SEBSettings.KeyHashedAdminPassword]))
+            // If an admin password is saved in the settings (as a hash), 
+            // then we fill a placeholder string into the admin password text fields
+            if (!String.IsNullOrEmpty((String)SEBSettings.settingsCurrent[SEBSettings.KeyHashedAdminPassword]))
 			{
 				// CAUTION: Do not change the order of setting the placeholders and the flag,
 				// since the fired textBox..._TextChanged() events use these data!
@@ -292,10 +297,12 @@ namespace SebWindowsConfig
 
 			checkBoxAllowQuit         .Checked = (Boolean)SEBSettings.settingsCurrent[SEBSettings.KeyAllowQuit];
 			checkBoxIgnoreExitKeys    .Checked = (Boolean)SEBSettings.settingsCurrent[SEBSettings.KeyIgnoreExitKeys];
+            checkBoxSEBServer         .Checked = (Boolean)SEBSettings.settingsCurrent[SEBSettings.KeySEBServer];
+            checkBoxSEBManager        .Checked = (Boolean)SEBSettings.settingsCurrent[SEBSettings.KeySEBManager];
 
-			// If a quit password is saved in the settings (as a hash), 
-			// then we fill a placeholder string into the quit password text fields
-			if (!String.IsNullOrEmpty((String)SEBSettings.settingsCurrent[SEBSettings.KeyHashedQuitPassword]))
+            // If a quit password is saved in the settings (as a hash), 
+            // then we fill a placeholder string into the quit password text fields
+            if (!String.IsNullOrEmpty((String)SEBSettings.settingsCurrent[SEBSettings.KeyHashedQuitPassword]))
 			{
 				// CAUTION: Do not change the order of setting the placeholders and the flag,
 				// since the fired textBox..._TextChanged() events use these data!
@@ -876,17 +883,57 @@ namespace SebWindowsConfig
 			SEBSettings.settingsCurrent[SEBSettings.KeyStartURL] = textBoxStartURL.Text;
 		}
 
-		private void textBoxSebServerURL_TextChanged(object sender, EventArgs e)
-		{
-			SEBSettings.settingsCurrent[SEBSettings.KeySebServerURL] = textBoxSebServerURL.Text;
-		}
+        private void textBoxSebServerURL_TextChanged(object sender, EventArgs e)
+        {
+            SEBSettings.settingsCurrent[SEBSettings.KeySebServerURL] = textBoxSebServerURL.Text;
+        }
 
-		private void textBoxAdminPassword_TextChanged(object sender, EventArgs e)
+        private void textBoxAdminPassword_TextChanged(object sender, EventArgs e)
 		{
 			ComparePasswords(textBoxAdminPassword, textBoxConfirmAdminPassword, ref adminPasswordFieldsContainHash, labelAdminPasswordCompare, SEBSettings.KeyHashedAdminPassword);
 		}
 
-		private void textBoxConfirmAdminPassword_TextChanged(object sender, EventArgs e)
+        private void textBoxAUTH_KEY_TextChanged(object sender, EventArgs e)
+        {
+            SEBSettings.settingsCurrent[SEBSettings.KeySebAUTH_KEY] = textBoxAUTH_KEY.Text;
+        }
+
+        private void textBoxUnique_KEY_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxMachineGUID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAPI_Refresh_ValueChanged(object sender, EventArgs e)
+        {
+            SEBSettings.settingsCurrent[SEBSettings.KeySebAPI_Refresh] = textBoxAPI_Refresh.Text;
+        }
+
+        private void checkBoxDownloadOpenSEBFilesFromAPIONLY_CheckedChanged(object sender, EventArgs e)
+        {
+            SEBSettings.settingsCurrent[SEBSettings.KeyDownloadAndOpenSebConfigFromAPIONLY] = checkBoxDownloadOpenSEBFilesFromAPIONLY.Checked;
+        }
+
+        private void checkBoxSEBManager_CheckedChanged(object sender, EventArgs e)
+        {
+            SEBSettings.settingsCurrent[SEBSettings.KeySEBManager] = checkBoxSEBManager.Checked;
+            textBoxSebServerURL.Text = "SecureExamination.org/?__page=api";
+            textBoxSebServerURL.Enabled = !textBoxSebServerURL.Enabled;
+            textBoxAUTH_KEY.Enabled = checkBoxSEBServer.Checked;
+        }
+
+        private void checkBoxSEBServer_CheckedChanged(object sender, EventArgs e)
+        {
+            SEBSettings.settingsCurrent[SEBSettings.KeySEBServer] = checkBoxSEBServer.Checked;
+            textBoxStartURL.Enabled = !checkBoxSEBServer.Checked;
+            groupBoxSEBServer.Enabled = checkBoxSEBServer.Checked;
+        }
+
+        private void textBoxConfirmAdminPassword_TextChanged(object sender, EventArgs e)
 		{
 			ComparePasswords(textBoxAdminPassword, textBoxConfirmAdminPassword, ref adminPasswordFieldsContainHash, labelAdminPasswordCompare, SEBSettings.KeyHashedAdminPassword);
 		}
@@ -4012,6 +4059,5 @@ namespace SebWindowsConfig
 		{
 			SEBSettings.settingsCurrent[SEBSettings.KeyAudioVolumeLevel] = trackBarVolumeLevel.Value;
 		}
-
     }
 }

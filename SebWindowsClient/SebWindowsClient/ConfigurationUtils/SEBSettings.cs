@@ -75,20 +75,25 @@ namespace SebWindowsClient.ConfigurationUtils
 		public const String KeyOriginatorVersion = "originatorVersion";
 
 		// Group "General"
-		public const String KeyStartURL             = "startURL";
-		public const String KeyStartResource        = "startResource";
-		public const String KeySebServerURL         = "sebServerURL";
-		public const String KeyHashedAdminPassword  = "hashedAdminPassword";
-		public const String KeyAllowQuit            = "allowQuit";
-		public const String KeyIgnoreExitKeys       = "ignoreExitKeys";
-		public const String KeyHashedQuitPassword   = "hashedQuitPassword";
-		public const String KeyExitKey1             = "exitKey1";
-		public const String KeyExitKey2             = "exitKey2";
-		public const String KeyExitKey3             = "exitKey3";
-		public const String KeySebMode              = "sebMode";
-		public const String KeyBrowserMessagingSocket = "browserMessagingSocket";
-		public const String KeyBrowserMessagingPingTime = "browserMessagingPingTime";
-		public const String KeyBrowserMessagingSocketEnabled = "browserMessagingSocketEnabled";
+		public const String KeyStartURL                             = "startURL";
+		public const String KeyStartResource                        = "startResource";
+		public const String KeySebServerURL                         = "sebServerURL";
+        public const String KeySebAUTH_KEY                          = "AUTH_KEY";
+        public const String KeySebAPI_Refresh                       = "1";
+        public const String KeyHashedAdminPassword                  = "hashedAdminPassword";
+		public const String KeyAllowQuit                            = "allowQuit";
+        public const String KeySEBServer                            = "SEBServer";
+        public const String KeySEBManager                           = "SEBManager";
+        public const String KeyIgnoreExitKeys                       = "ignoreExitKeys";
+		public const String KeyHashedQuitPassword                   = "hashedQuitPassword";
+        public const String KeyDownloadAndOpenSebConfigFromAPIONLY  = "downloadAndOpenSebConfigFromAPIONLY";
+        public const String KeyExitKey1                             = "exitKey1";
+		public const String KeyExitKey2                             = "exitKey2";
+		public const String KeyExitKey3                             = "exitKey3";
+		public const String KeySebMode                              = "sebMode";
+		public const String KeyBrowserMessagingSocket               = "browserMessagingSocket";
+		public const String KeyBrowserMessagingPingTime             = "browserMessagingPingTime";
+		public const String KeyBrowserMessagingSocketEnabled        = "browserMessagingSocketEnabled";
 
 		// Group "Config File"
 		public const String KeySebConfigPurpose        = "sebConfigPurpose";
@@ -541,19 +546,24 @@ namespace SebWindowsClient.ConfigurationUtils
 			SEBSettings.settingsDefault.Add(SEBSettings.KeyOriginatorVersion, "SEB_Win_2.1.1");
 
 			// Default settings for group "General"
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyStartURL           , "http://www.safeexambrowser.org/start");
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyStartResource           , "");
-			SEBSettings.settingsDefault.Add(SEBSettings.KeySebServerURL       , "");
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyHashedAdminPassword, "");
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyAllowQuit          , true);
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyIgnoreExitKeys     , true);
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyHashedQuitPassword , "");
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyExitKey1,  2);
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyExitKey2, 10);
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyExitKey3,  5);
-			SEBSettings.settingsDefault.Add(SEBSettings.KeySebMode, 0);
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyBrowserMessagingSocket, SEBXULRunnerWebSocketServer.ServerAddress);
-			SEBSettings.settingsDefault.Add(SEBSettings.KeyBrowserMessagingPingTime, 120000);
+			SEBSettings.settingsDefault.Add(SEBSettings.KeyStartURL                             , "http://www.safeexambrowser.org/start");
+            SEBSettings.settingsDefault.Add(SEBSettings.KeyStartResource                        , "");
+			SEBSettings.settingsDefault.Add(SEBSettings.KeySebServerURL                         , "");
+			SEBSettings.settingsDefault.Add(SEBSettings.KeyHashedAdminPassword                  , "");
+            SEBSettings.settingsDefault.Add(SEBSettings.KeySebAUTH_KEY                          , "");
+            SEBSettings.settingsDefault.Add(SEBSettings.KeySebAPI_Refresh                       , "1");
+            SEBSettings.settingsDefault.Add(SEBSettings.KeyAllowQuit                            , true);
+            SEBSettings.settingsDefault.Add(SEBSettings.KeySEBServer                            , false);
+            SEBSettings.settingsDefault.Add(SEBSettings.KeySEBManager                           , false);
+            SEBSettings.settingsDefault.Add(SEBSettings.KeyIgnoreExitKeys                       , true);
+            SEBSettings.settingsDefault.Add(SEBSettings.KeyDownloadAndOpenSebConfigFromAPIONLY  , false);
+            SEBSettings.settingsDefault.Add(SEBSettings.KeyHashedQuitPassword                   , "");
+			SEBSettings.settingsDefault.Add(SEBSettings.KeyExitKey1                             ,  2);
+			SEBSettings.settingsDefault.Add(SEBSettings.KeyExitKey2                             , 10);
+			SEBSettings.settingsDefault.Add(SEBSettings.KeyExitKey3                             ,  5);
+			SEBSettings.settingsDefault.Add(SEBSettings.KeySebMode                              , 0);
+			SEBSettings.settingsDefault.Add(SEBSettings.KeyBrowserMessagingSocket               , SEBXULRunnerWebSocketServer.ServerAddress);
+			SEBSettings.settingsDefault.Add(SEBSettings.KeyBrowserMessagingPingTime             , 120000);
 
 			// Default settings for group "Config File"
 			SEBSettings.settingsDefault.Add(SEBSettings.KeySebConfigPurpose       , 1);

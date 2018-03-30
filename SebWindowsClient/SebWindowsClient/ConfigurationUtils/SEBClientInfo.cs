@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -324,6 +325,29 @@ namespace SebWindowsClient.ConfigurationUtils
             Logger.AddInformation(userInfo.ToString(), null, null);
 
             return setSebClientConfiguration;
+        }
+
+        public static string MachineGUID()
+        {
+            if (Environment.Is64BitOperatingSystem)
+            {
+                RegistryKey localKey = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry64);
+                localKey = localKey.OpenSubKey(@"SOFTWARE\Microsoft\Cryptography");
+                if (localKey != null)
+                {
+                    return localKey.GetValue("MachineGuid").ToString();
+                }
+            }
+            else
+            {
+                RegistryKey localKey32 = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry32);
+                localKey32 = localKey32.OpenSubKey(@"SOFTWARE\Microsoft\Cryptography");
+                if (localKey32 != null)
+                {
+                    return localKey32.GetValue("MachineGuid").ToString();
+                }
+            }
+            return "OS not found";
         }
 
         /// <summary>

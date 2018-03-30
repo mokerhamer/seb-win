@@ -30,7 +30,7 @@ namespace SebWindowsConfig
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SebWindowsConfigForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.openFileDialogSebConfigFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogSebConfigFile = new System.Windows.Forms.SaveFileDialog();
             this.imageListTabIcons = new System.Windows.Forms.ImageList(this.components);
@@ -238,6 +238,8 @@ namespace SebWindowsConfig
             this.checkBoxOpenDownloads = new System.Windows.Forms.CheckBox();
             this.checkBoxAllowDownUploads = new System.Windows.Forms.CheckBox();
             this.tabPageBrowser = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxUserAgent = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxBrowserSuffix = new System.Windows.Forms.TextBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
@@ -349,6 +351,22 @@ namespace SebWindowsConfig
             this.buttonRevertToDefaultSettings = new System.Windows.Forms.Button();
             this.buttonRevertToLastOpened = new System.Windows.Forms.Button();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
+            this.groupBoxSEBServer = new System.Windows.Forms.GroupBox();
+            this.textBoxAPI_Refresh = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY = new System.Windows.Forms.CheckBox();
+            this.textBoxMachineGUID = new System.Windows.Forms.TextBox();
+            this.labelMachineGUID = new System.Windows.Forms.Label();
+            this.labelMinuts = new System.Windows.Forms.Label();
+            this.labelRefreshConfig = new System.Windows.Forms.Label();
+            this.SebServerHelp = new System.Windows.Forms.Button();
+            this.textBoxUnique_KEY = new System.Windows.Forms.TextBox();
+            this.labelUniqueName = new System.Windows.Forms.Label();
+            this.checkBoxSEBManager = new System.Windows.Forms.CheckBox();
+            this.textBoxAUTH_KEY = new System.Windows.Forms.TextBox();
+            this.labelAUTHKEY = new System.Windows.Forms.Label();
+            this.textBoxSebServerURL = new System.Windows.Forms.TextBox();
+            this.labelSebServerURL = new System.Windows.Forms.Label();
+            this.checkBoxSEBServer = new System.Windows.Forms.CheckBox();
             this.comboBoxAdditionalResourceStartUrl = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.checkBoxIgnoreExitKeys = new System.Windows.Forms.CheckBox();
@@ -358,8 +376,6 @@ namespace SebWindowsConfig
             this.listBoxExitKey1 = new System.Windows.Forms.ListBox();
             this.listBoxExitKey3 = new System.Windows.Forms.ListBox();
             this.listBoxExitKey2 = new System.Windows.Forms.ListBox();
-            this.labelSebServerURL = new System.Windows.Forms.Label();
-            this.textBoxSebServerURL = new System.Windows.Forms.TextBox();
             this.textBoxConfirmAdminPassword = new System.Windows.Forms.TextBox();
             this.textBoxAdminPassword = new System.Windows.Forms.TextBox();
             this.textBoxConfirmQuitPassword = new System.Windows.Forms.TextBox();
@@ -392,8 +408,6 @@ namespace SebWindowsConfig
             this.editDuplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configureClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.applyAndStartSEBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBoxUserAgent = new System.Windows.Forms.TextBox();
             this.tabPageHookedKeys.SuspendLayout();
             this.groupBoxFunctionKeys.SuspendLayout();
             this.groupBoxSpecialKeys.SuspendLayout();
@@ -440,6 +454,8 @@ namespace SebWindowsConfig
             this.groupBoxMainBrowserWindow.SuspendLayout();
             this.tabPageConfigFile.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
+            this.groupBoxSEBServer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxAPI_Refresh)).BeginInit();
             this.groupBoxExitSequence.SuspendLayout();
             this.tabControlSebWindowsConfig.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -1467,8 +1483,8 @@ namespace SebWindowsConfig
             // 
             // Type
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.Type.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
+            this.Type.DefaultCellStyle = dataGridViewCellStyle3;
             this.Type.HeaderText = "Type";
             this.Type.Name = "Type";
             this.Type.ReadOnly = true;
@@ -3079,6 +3095,31 @@ namespace SebWindowsConfig
             this.tabPageBrowser.Text = "Browser";
             this.tabPageBrowser.UseVisualStyleBackColor = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(540, 204);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(178, 13);
+            this.label12.TabIndex = 126;
+            this.label12.Text = "Suffix to be added to any user agent";
+            // 
+            // textBoxUserAgent
+            // 
+            this.textBoxUserAgent.AcceptsReturn = true;
+            this.textBoxUserAgent.AcceptsTab = true;
+            this.textBoxUserAgent.AllowDrop = true;
+            this.textBoxUserAgent.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUserAgent.Location = new System.Drawing.Point(543, 221);
+            this.textBoxUserAgent.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.textBoxUserAgent.Name = "textBoxUserAgent";
+            this.textBoxUserAgent.Size = new System.Drawing.Size(500, 19);
+            this.textBoxUserAgent.TabIndex = 125;
+            this.toolTip1.SetToolTip(this.textBoxUserAgent, "This string is appended to any user agent, in addition to the user agents generat" +
+        "ed with the other setting options.");
+            this.textBoxUserAgent.TextChanged += new System.EventHandler(this.textBoxUserAgent_TextChanged);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -4533,14 +4574,14 @@ namespace SebWindowsConfig
             // 
             // tabPageGeneral
             // 
+            this.tabPageGeneral.Controls.Add(this.groupBoxSEBServer);
+            this.tabPageGeneral.Controls.Add(this.checkBoxSEBServer);
             this.tabPageGeneral.Controls.Add(this.comboBoxAdditionalResourceStartUrl);
             this.tabPageGeneral.Controls.Add(this.label9);
             this.tabPageGeneral.Controls.Add(this.checkBoxIgnoreExitKeys);
             this.tabPageGeneral.Controls.Add(this.labelQuitPasswordCompare);
             this.tabPageGeneral.Controls.Add(this.labelAdminPasswordCompare);
             this.tabPageGeneral.Controls.Add(this.groupBoxExitSequence);
-            this.tabPageGeneral.Controls.Add(this.labelSebServerURL);
-            this.tabPageGeneral.Controls.Add(this.textBoxSebServerURL);
             this.tabPageGeneral.Controls.Add(this.textBoxConfirmAdminPassword);
             this.tabPageGeneral.Controls.Add(this.textBoxAdminPassword);
             this.tabPageGeneral.Controls.Add(this.textBoxConfirmQuitPassword);
@@ -4563,6 +4604,237 @@ namespace SebWindowsConfig
             this.tabPageGeneral.TabIndex = 4;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxSEBServer
+            // 
+            this.groupBoxSEBServer.Controls.Add(this.textBoxAPI_Refresh);
+            this.groupBoxSEBServer.Controls.Add(this.checkBoxDownloadOpenSEBFilesFromAPIONLY);
+            this.groupBoxSEBServer.Controls.Add(this.textBoxMachineGUID);
+            this.groupBoxSEBServer.Controls.Add(this.labelMachineGUID);
+            this.groupBoxSEBServer.Controls.Add(this.labelMinuts);
+            this.groupBoxSEBServer.Controls.Add(this.labelRefreshConfig);
+            this.groupBoxSEBServer.Controls.Add(this.SebServerHelp);
+            this.groupBoxSEBServer.Controls.Add(this.textBoxUnique_KEY);
+            this.groupBoxSEBServer.Controls.Add(this.labelUniqueName);
+            this.groupBoxSEBServer.Controls.Add(this.checkBoxSEBManager);
+            this.groupBoxSEBServer.Controls.Add(this.textBoxAUTH_KEY);
+            this.groupBoxSEBServer.Controls.Add(this.labelAUTHKEY);
+            this.groupBoxSEBServer.Controls.Add(this.textBoxSebServerURL);
+            this.groupBoxSEBServer.Controls.Add(this.labelSebServerURL);
+            this.groupBoxSEBServer.Enabled = false;
+            this.groupBoxSEBServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxSEBServer.Location = new System.Drawing.Point(532, 107);
+            this.groupBoxSEBServer.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxSEBServer.Name = "groupBoxSEBServer";
+            this.groupBoxSEBServer.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxSEBServer.Size = new System.Drawing.Size(423, 217);
+            this.groupBoxSEBServer.TabIndex = 67;
+            this.groupBoxSEBServer.TabStop = false;
+            this.groupBoxSEBServer.Text = "SEB Server Settings";
+            this.toolTip1.SetToolTip(this.groupBoxSEBServer, "SEB Server Settings - Manage Client Config");
+            // 
+            // textBoxAPI_Refresh
+            // 
+            this.textBoxAPI_Refresh.BackColor = System.Drawing.Color.White;
+            this.textBoxAPI_Refresh.Location = new System.Drawing.Point(160, 127);
+            this.textBoxAPI_Refresh.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.textBoxAPI_Refresh.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.textBoxAPI_Refresh.Name = "textBoxAPI_Refresh";
+            this.textBoxAPI_Refresh.ReadOnly = true;
+            this.textBoxAPI_Refresh.Size = new System.Drawing.Size(60, 19);
+            this.textBoxAPI_Refresh.TabIndex = 67;
+            this.textBoxAPI_Refresh.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.textBoxAPI_Refresh.ValueChanged += new System.EventHandler(this.textBoxAPI_Refresh_ValueChanged);
+            // 
+            // checkBoxDownloadOpenSEBFilesFromAPIONLY
+            // 
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.AutoSize = true;
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.Location = new System.Drawing.Point(160, 151);
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.Name = "checkBoxDownloadOpenSEBFilesFromAPIONLY";
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.Size = new System.Drawing.Size(231, 17);
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.TabIndex = 89;
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.Text = "ONLY Download config(s) from API Domain";
+            this.toolTip1.SetToolTip(this.checkBoxDownloadOpenSEBFilesFromAPIONLY, "Extra Security Option: Option \"Config Download and open\" Checkbox should be check" +
+        "ed under \"Down/Uploads\" Tab before being able to use this option.");
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.UseVisualStyleBackColor = true;
+            this.checkBoxDownloadOpenSEBFilesFromAPIONLY.CheckedChanged += new System.EventHandler(this.checkBoxDownloadOpenSEBFilesFromAPIONLY_CheckedChanged);
+            // 
+            // textBoxMachineGUID
+            // 
+            this.textBoxMachineGUID.Enabled = false;
+            this.textBoxMachineGUID.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMachineGUID.Location = new System.Drawing.Point(160, 104);
+            this.textBoxMachineGUID.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxMachineGUID.Name = "textBoxMachineGUID";
+            this.textBoxMachineGUID.Size = new System.Drawing.Size(250, 19);
+            this.textBoxMachineGUID.TabIndex = 72;
+            this.toolTip1.SetToolTip(this.textBoxMachineGUID, "This is a Unique code that was generated by Windows when installing.  Used as a u" +
+        "nique system identifier.");
+            this.textBoxMachineGUID.TextChanged += new System.EventHandler(this.textBoxMachineGUID_TextChanged);
+            // 
+            // labelMachineGUID
+            // 
+            this.labelMachineGUID.AutoSize = true;
+            this.labelMachineGUID.Enabled = false;
+            this.labelMachineGUID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMachineGUID.Location = new System.Drawing.Point(78, 105);
+            this.labelMachineGUID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMachineGUID.Name = "labelMachineGUID";
+            this.labelMachineGUID.Size = new System.Drawing.Size(78, 13);
+            this.labelMachineGUID.TabIndex = 73;
+            this.labelMachineGUID.Text = "Machine GUID";
+            // 
+            // labelMinuts
+            // 
+            this.labelMinuts.AutoSize = true;
+            this.labelMinuts.Enabled = false;
+            this.labelMinuts.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMinuts.Location = new System.Drawing.Point(225, 129);
+            this.labelMinuts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMinuts.Name = "labelMinuts";
+            this.labelMinuts.Size = new System.Drawing.Size(50, 13);
+            this.labelMinuts.TabIndex = 71;
+            this.labelMinuts.Text = "Minute(s)";
+            // 
+            // labelRefreshConfig
+            // 
+            this.labelRefreshConfig.AutoSize = true;
+            this.labelRefreshConfig.Enabled = false;
+            this.labelRefreshConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRefreshConfig.Location = new System.Drawing.Point(3, 129);
+            this.labelRefreshConfig.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRefreshConfig.Name = "labelRefreshConfig";
+            this.labelRefreshConfig.Size = new System.Drawing.Size(152, 13);
+            this.labelRefreshConfig.TabIndex = 69;
+            this.labelRefreshConfig.Text = "Refresh config if not older then";
+            // 
+            // SebServerHelp
+            // 
+            this.SebServerHelp.Location = new System.Drawing.Point(354, 188);
+            this.SebServerHelp.Margin = new System.Windows.Forms.Padding(2);
+            this.SebServerHelp.Name = "SebServerHelp";
+            this.SebServerHelp.Size = new System.Drawing.Size(56, 24);
+            this.SebServerHelp.TabIndex = 67;
+            this.SebServerHelp.Text = "Help";
+            this.SebServerHelp.UseVisualStyleBackColor = true;
+            this.SebServerHelp.Visible = false;
+            // 
+            // textBoxUnique_KEY
+            // 
+            this.textBoxUnique_KEY.Enabled = false;
+            this.textBoxUnique_KEY.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUnique_KEY.Location = new System.Drawing.Point(160, 81);
+            this.textBoxUnique_KEY.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxUnique_KEY.Name = "textBoxUnique_KEY";
+            this.textBoxUnique_KEY.Size = new System.Drawing.Size(250, 19);
+            this.textBoxUnique_KEY.TabIndex = 66;
+            this.toolTip1.SetToolTip(this.textBoxUnique_KEY, "This your system name, it helps the user (Admin) reconise the systems on the webs" +
+        "ite by displaying system name.");
+            this.textBoxUnique_KEY.TextChanged += new System.EventHandler(this.textBoxUnique_KEY_TextChanged);
+            // 
+            // labelUniqueName
+            // 
+            this.labelUniqueName.AutoSize = true;
+            this.labelUniqueName.Enabled = false;
+            this.labelUniqueName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUniqueName.Location = new System.Drawing.Point(24, 82);
+            this.labelUniqueName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelUniqueName.Name = "labelUniqueName";
+            this.labelUniqueName.Size = new System.Drawing.Size(132, 13);
+            this.labelUniqueName.TabIndex = 67;
+            this.labelUniqueName.Text = "System Recognition Name";
+            // 
+            // checkBoxSEBManager
+            // 
+            this.checkBoxSEBManager.AutoSize = true;
+            this.checkBoxSEBManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSEBManager.Location = new System.Drawing.Point(160, 16);
+            this.checkBoxSEBManager.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxSEBManager.Name = "checkBoxSEBManager";
+            this.checkBoxSEBManager.Size = new System.Drawing.Size(206, 17);
+            this.checkBoxSEBManager.TabIndex = 65;
+            this.checkBoxSEBManager.Text = "I\'m using www.SecureExamination.org";
+            this.toolTip1.SetToolTip(this.checkBoxSEBManager, "SecureExamination Eases your way in remote managing SEB Client configurations.");
+            this.checkBoxSEBManager.UseVisualStyleBackColor = true;
+            this.checkBoxSEBManager.CheckedChanged += new System.EventHandler(this.checkBoxSEBManager_CheckedChanged);
+            // 
+            // textBoxAUTH_KEY
+            // 
+            this.textBoxAUTH_KEY.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAUTH_KEY.Location = new System.Drawing.Point(160, 58);
+            this.textBoxAUTH_KEY.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxAUTH_KEY.Name = "textBoxAUTH_KEY";
+            this.textBoxAUTH_KEY.Size = new System.Drawing.Size(250, 19);
+            this.textBoxAUTH_KEY.TabIndex = 64;
+            this.toolTip1.SetToolTip(this.textBoxAUTH_KEY, "API AUTH is supplied by your SEB Server provider.");
+            this.textBoxAUTH_KEY.TextChanged += new System.EventHandler(this.textBoxAUTH_KEY_TextChanged);
+            // 
+            // labelAUTHKEY
+            // 
+            this.labelAUTHKEY.AutoSize = true;
+            this.labelAUTHKEY.Enabled = false;
+            this.labelAUTHKEY.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAUTHKEY.Location = new System.Drawing.Point(72, 59);
+            this.labelAUTHKEY.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAUTHKEY.Name = "labelAUTHKEY";
+            this.labelAUTHKEY.Size = new System.Drawing.Size(84, 13);
+            this.labelAUTHKEY.TabIndex = 65;
+            this.labelAUTHKEY.Text = "API AUTH_KEY";
+            // 
+            // textBoxSebServerURL
+            // 
+            this.textBoxSebServerURL.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSebServerURL.Location = new System.Drawing.Point(160, 35);
+            this.textBoxSebServerURL.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSebServerURL.Name = "textBoxSebServerURL";
+            this.textBoxSebServerURL.Size = new System.Drawing.Size(250, 19);
+            this.textBoxSebServerURL.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.textBoxSebServerURL, "If you are using SecureExamination.org check the box above. (Note* Do not add HTT" +
+        "P, HTTPS or WWW before URL!)");
+            this.textBoxSebServerURL.TextChanged += new System.EventHandler(this.textBoxSebServerURL_TextChanged);
+            // 
+            // labelSebServerURL
+            // 
+            this.labelSebServerURL.AutoSize = true;
+            this.labelSebServerURL.Enabled = false;
+            this.labelSebServerURL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelSebServerURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSebServerURL.Location = new System.Drawing.Point(107, 36);
+            this.labelSebServerURL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSebServerURL.Name = "labelSebServerURL";
+            this.labelSebServerURL.Size = new System.Drawing.Size(49, 13);
+            this.labelSebServerURL.TabIndex = 47;
+            this.labelSebServerURL.Text = "API URL";
+            // 
+            // checkBoxSEBServer
+            // 
+            this.checkBoxSEBServer.AutoSize = true;
+            this.checkBoxSEBServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSEBServer.Location = new System.Drawing.Point(105, 53);
+            this.checkBoxSEBServer.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxSEBServer.Name = "checkBoxSEBServer";
+            this.checkBoxSEBServer.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxSEBServer.TabIndex = 65;
+            this.checkBoxSEBServer.Text = "Use SEB Server";
+            this.toolTip1.SetToolTip(this.checkBoxSEBServer, "SEB ignores the exit keys and can only be quit manually by entering the quit pass" +
+        "word (click Quit button in SEB taskbar, press Ctrl-Q or click the main browser w" +
+        "indow close button).");
+            this.checkBoxSEBServer.UseVisualStyleBackColor = true;
+            this.checkBoxSEBServer.CheckedChanged += new System.EventHandler(this.checkBoxSEBServer_CheckedChanged);
             // 
             // comboBoxAdditionalResourceStartUrl
             // 
@@ -4682,31 +4954,6 @@ namespace SebWindowsConfig
             this.listBoxExitKey2.Size = new System.Drawing.Size(31, 160);
             this.listBoxExitKey2.TabIndex = 1;
             this.listBoxExitKey2.SelectedIndexChanged += new System.EventHandler(this.listBoxExitKey2_SelectedIndexChanged);
-            // 
-            // labelSebServerURL
-            // 
-            this.labelSebServerURL.AutoSize = true;
-            this.labelSebServerURL.Enabled = false;
-            this.labelSebServerURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSebServerURL.Location = new System.Drawing.Point(16, 58);
-            this.labelSebServerURL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelSebServerURL.Name = "labelSebServerURL";
-            this.labelSebServerURL.Size = new System.Drawing.Size(87, 13);
-            this.labelSebServerURL.TabIndex = 47;
-            this.labelSebServerURL.Text = "SEB Server URL";
-            this.labelSebServerURL.Visible = false;
-            // 
-            // textBoxSebServerURL
-            // 
-            this.textBoxSebServerURL.Enabled = false;
-            this.textBoxSebServerURL.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSebServerURL.Location = new System.Drawing.Point(105, 53);
-            this.textBoxSebServerURL.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBoxSebServerURL.Name = "textBoxSebServerURL";
-            this.textBoxSebServerURL.Size = new System.Drawing.Size(402, 19);
-            this.textBoxSebServerURL.TabIndex = 1;
-            this.textBoxSebServerURL.Visible = false;
-            this.textBoxSebServerURL.TextChanged += new System.EventHandler(this.textBoxSebServerURL_TextChanged);
             // 
             // textBoxConfirmAdminPassword
             // 
@@ -5030,31 +5277,6 @@ namespace SebWindowsConfig
             this.applyAndStartSEBToolStripMenuItem.Text = "Apply and Start SEB";
             this.applyAndStartSEBToolStripMenuItem.Click += new System.EventHandler(this.applyAndStartSEBToolStripMenuItem_Click);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(540, 204);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(178, 13);
-            this.label12.TabIndex = 126;
-            this.label12.Text = "Suffix to be added to any user agent";
-            // 
-            // textBoxUserAgent
-            // 
-            this.textBoxUserAgent.AcceptsReturn = true;
-            this.textBoxUserAgent.AcceptsTab = true;
-            this.textBoxUserAgent.AllowDrop = true;
-            this.textBoxUserAgent.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUserAgent.Location = new System.Drawing.Point(543, 221);
-            this.textBoxUserAgent.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBoxUserAgent.Name = "textBoxUserAgent";
-            this.textBoxUserAgent.Size = new System.Drawing.Size(500, 19);
-            this.textBoxUserAgent.TabIndex = 125;
-            this.toolTip1.SetToolTip(this.textBoxUserAgent, "This string is appended to any user agent, in addition to the user agents generat" +
-        "ed with the other setting options.");
-            this.textBoxUserAgent.TextChanged += new System.EventHandler(this.textBoxUserAgent_TextChanged);
-            // 
             // SebWindowsConfigForm
             // 
             this.AllowDrop = true;
@@ -5158,6 +5380,9 @@ namespace SebWindowsConfig
             this.tabPageConfigFile.PerformLayout();
             this.tabPageGeneral.ResumeLayout(false);
             this.tabPageGeneral.PerformLayout();
+            this.groupBoxSEBServer.ResumeLayout(false);
+            this.groupBoxSEBServer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxAPI_Refresh)).EndInit();
             this.groupBoxExitSequence.ResumeLayout(false);
             this.tabControlSebWindowsConfig.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -5278,8 +5503,6 @@ namespace SebWindowsConfig
         private System.Windows.Forms.GroupBox groupBoxExitSequence;
         private System.Windows.Forms.ListBox listBoxExitKey1;
         private System.Windows.Forms.ListBox listBoxExitKey2;
-        private System.Windows.Forms.Label labelSebServerURL;
-        private System.Windows.Forms.TextBox textBoxSebServerURL;
         private System.Windows.Forms.TextBox textBoxConfirmAdminPassword;
         private System.Windows.Forms.TextBox textBoxAdminPassword;
         private System.Windows.Forms.TextBox textBoxConfirmQuitPassword;
@@ -5533,6 +5756,22 @@ namespace SebWindowsConfig
         private System.Windows.Forms.CheckBox checkBoxAllowReloadNewWindow;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxUserAgent;
+        private System.Windows.Forms.CheckBox checkBoxSEBServer;
+        private System.Windows.Forms.GroupBox groupBoxSEBServer;
+        private System.Windows.Forms.NumericUpDown textBoxAPI_Refresh;
+        private System.Windows.Forms.CheckBox checkBoxDownloadOpenSEBFilesFromAPIONLY;
+        private System.Windows.Forms.TextBox textBoxMachineGUID;
+        private System.Windows.Forms.Label labelMachineGUID;
+        private System.Windows.Forms.Label labelMinuts;
+        private System.Windows.Forms.Label labelRefreshConfig;
+        private System.Windows.Forms.Button SebServerHelp;
+        private System.Windows.Forms.TextBox textBoxUnique_KEY;
+        private System.Windows.Forms.Label labelUniqueName;
+        private System.Windows.Forms.CheckBox checkBoxSEBManager;
+        private System.Windows.Forms.TextBox textBoxAUTH_KEY;
+        private System.Windows.Forms.Label labelAUTHKEY;
+        private System.Windows.Forms.TextBox textBoxSebServerURL;
+        private System.Windows.Forms.Label labelSebServerURL;
     }
 }
 
